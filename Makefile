@@ -5,10 +5,10 @@ PORT=443
 
 
 proto:              ## Remake the proto generation
-	docker run --rm -v $$(pwd):/grpc-vs-connect:rw joshcarp/protoc -I./grpc-vs-connect/proto/ --go_out=paths=source_relative:/grpc-vs-connect/backend/pkg/proto/elizav1 eliza.proto
-	docker run --rm -v $$(pwd):/grpc-vs-connect:rw joshcarp/protoc -I././grpc-vs-connect/proto/ --go-grpc_out=paths=source_relative:/grpc-vs-connect/backend/pkg/proto/elizav1 eliza.proto
-	docker run --rm -v $$(pwd):/grpc-vs-connect:rw joshcarp/protoc -I././grpc-vs-connect/proto/ --js_out=import_style=commonjs:/grpc-vs-connect/frontend/src/proto eliza.proto
-	docker run --rm -v $$(pwd):/grpc-vs-connect:rw joshcarp/protoc -I././grpc-vs-connect/proto/ --grpc-web_out=import_style=commonjs,,mode=grpcwebtext:/grpc-vs-connect/frontend/src/proto eliza.proto
+	protoc -I./proto/ --go_out=paths=source_relative:backend/pkg/proto/elizav1 eliza.proto
+	protoc -I././proto/ --go-grpc_out=paths=source_relative:backend/pkg/proto/elizav1 eliza.proto
+	protoc -I././proto/ --js_out=import_style=commonjs:frontend/src/proto eliza.proto
+	protoc -I././proto/ --grpc-web_out=import_style=typescript,,mode=grpcwebtext:frontend/src/proto eliza.proto
 
 docker:             ## Build the authentication service
 	docker build .  --build-arg SERVICE=$(SERVICE) -t joshcarp/grpc-vs-connect

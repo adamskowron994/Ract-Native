@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "module": "commonjs",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
+    "allowJs": true,
+    "outDir": "./dist",
     "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
   },
-  "include": ["src"]
+  "include": [
+    "src/index.ts",
+    "src/proto/eliza_pb.d.ts",
+    "src/proto/eliza_pb.js",
+    "src/proto/ElizaServiceClientPb.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

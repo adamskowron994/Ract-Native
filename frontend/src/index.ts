@@ -1,25 +1,14 @@
-import "./proto/eliza_grpc_web_pb.js"
-import "./proto/eliza_pb.js"
-//
-// let introFinished = false;
-//
-// // Make the Eliza Service client
-// const client = proto.buf.connect.demo.eliza.v1.ElizaServiceClient(
-//     "https://localhost:8081"
-// )
-// var req = new proto.buf.connect.demo.eliza.v1.IntroduceRequest();
-// var stream = client.();
-// stream.on('data', function(response) {
-//     console.log(response.getMessage());
-// });
-// stream.on('status', function(status) {
-//     console.log(status.code);
-//     console.log(status.details);
-//     console.log(status.metadata);
-// });
-// stream.on('end', function(end) {
-//     // stream end signal
-// });
-//
-// // to close the stream
-// stream.cancel()
+import * as grpcWeb from 'grpc-web';
+import {ElizaServiceClient} from './proto/ElizaServiceClientPb';
+import {SayRequest} from './proto/eliza_pb';
+
+
+const elizaService = new ElizaServiceClient("http://localhost:8080")
+const req = new SayRequest();
+req.setSentence("Hi!");
+
+async function main() {
+    const res = await elizaService.say(req, {});
+    console.log(res);
+}
+main()
