@@ -3,11 +3,16 @@ import { Button, Dimensions, ScrollView, StyleSheet, Text, TextInput, View } fro
 import {
     createPromiseClient,
     createConnectTransport,
-} from '@bufbuild/connect-web'
+} from '@bufbuild/connect-web-next'
+import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
+import { grpcWebCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
 import { ElizaService } from './gen/buf/connect/demo/eliza/v1/eliza_connectweb.js'
 import { IntroduceRequest } from './gen/buf/connect/demo/eliza/v1/eliza_pb.js'
 import "fast-text-encoding";
 import { Platform } from 'react-native';
+
+console.log(connectCodeFromHttpStatus(431));
+console.log(grpcWebCodeFromHttpStatus(200));
 
 // Import polyfills if not running on web.  Attempting to import these in web mode will result in numerous errors
 // trying to access react-native APIs

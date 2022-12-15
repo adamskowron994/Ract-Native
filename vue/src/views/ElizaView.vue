@@ -3,10 +3,15 @@ import { defineComponent } from 'vue'
 import {
     createPromiseClient,
     createConnectTransport,
-} from '@bufbuild/connect-web'
-import type { PromiseClient } from '@bufbuild/connect-web'
+} from '@bufbuild/connect-web-next'
+import { connectCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-connect'
+import { grpcWebCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-grpc'
+import type { PromiseClient } from '@bufbuild/connect-web-next'
 import { ElizaService } from '../gen/buf/connect/demo/eliza/v1/eliza_connectweb'
 import { IntroduceRequest } from '../gen/buf/connect/demo/eliza/v1/eliza_pb'
+
+console.log(connectCodeFromHttpStatus(431))
+console.log(grpcWebCodeFromHttpStatus(200))
 
 interface Response {
     text: string

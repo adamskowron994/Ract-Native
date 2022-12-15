@@ -1,11 +1,16 @@
 import {
-    createConnectTransport,
     createPromiseClient,
-} from '@bufbuild/connect-web'
+    createConnectTransport,
+} from '@bufbuild/connect-web-next'
+import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
+import { grpcWebCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
 import React, { useState } from 'react'
 import './App.css'
 import { ElizaService } from './gen/buf/connect/demo/eliza/v1/eliza_connectweb.js'
 import { IntroduceRequest } from './gen/buf/connect/demo/eliza/v1/eliza_pb.js'
+
+console.log(connectCodeFromHttpStatus(431));
+console.log(grpcWebCodeFromHttpStatus(200));
 
 interface Response {
     text: string
