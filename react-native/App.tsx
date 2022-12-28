@@ -4,15 +4,16 @@ import {
     createPromiseClient,
     createConnectTransport,
 } from '@bufbuild/connect-web-next'
-import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
-import { grpcWebCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
 import { ElizaService } from './gen/buf/connect/demo/eliza/v1/eliza_connectweb.js'
 import { IntroduceRequest } from './gen/buf/connect/demo/eliza/v1/eliza_pb.js'
 import "fast-text-encoding";
 import { Platform } from 'react-native';
 
+import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
+import { grpcCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
+
 console.log(connectCodeFromHttpStatus(431));
-console.log(grpcWebCodeFromHttpStatus(200));
+console.log(grpcCodeFromHttpStatus(200));
 
 // Import polyfills if not running on web.  Attempting to import these in web mode will result in numerous errors
 // trying to access react-native APIs
@@ -78,6 +79,7 @@ function App() {
         <ScrollView style={styles.app}>
             <View style={styles.appHeader}>
                         <Text style={styles.h1}>Eliza</Text>
+                        <Text style={styles.h4}>React Native</Text>
             </View>
                 <View style={styles.container}>
                 {responses.map((resp, i) => {
@@ -110,6 +112,12 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 15,
     },
+    h4: {
+        marginTop: 0,
+        marginHorizontal: 0,
+        marginBottom: 15,
+        color: '#161ede',
+    },
     app: {
         backgroundColor: '#fafafa',
     },
@@ -132,6 +140,7 @@ const styles = StyleSheet.create({
     appHeader: {
         display: 'flex',
         justifyContent: 'space-evenly',
+        flexDirection: 'column',
         alignItems: 'center',
         color: '#000',
         backgroundColor: '#fff',

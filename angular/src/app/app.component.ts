@@ -20,6 +20,7 @@ interface Response {
 })
 export class AppComponent {
     title = 'Eliza'
+    project = 'Angular'
     statement: string = '';
     responses: Response[] = [
         {

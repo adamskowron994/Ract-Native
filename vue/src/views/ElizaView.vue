@@ -4,14 +4,15 @@ import {
     createPromiseClient,
     createConnectTransport,
 } from '@bufbuild/connect-web-next'
-import { connectCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-connect'
-import { grpcWebCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-grpc'
 import type { PromiseClient } from '@bufbuild/connect-web-next'
 import { ElizaService } from '../gen/buf/connect/demo/eliza/v1/eliza_connectweb'
 import { IntroduceRequest } from '../gen/buf/connect/demo/eliza/v1/eliza_pb'
 
+import { connectCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-connect'
+import { grpcCodeFromHttpStatus } from '@bufbuild/connect-core/protocol-grpc'
+
 console.log(connectCodeFromHttpStatus(431))
-console.log(grpcWebCodeFromHttpStatus(200))
+console.log(grpcCodeFromHttpStatus(200))
 
 interface Response {
     text: string
@@ -94,6 +95,7 @@ export default defineComponent({
 <template>
     <header class="app-header">
         <h1>Eliza</h1>
+        <h4>Vue</h4>
     </header>
     <div class="container">
         <div

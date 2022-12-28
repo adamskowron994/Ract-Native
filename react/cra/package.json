@@ -23,7 +23,6 @@
     "test": "react-app-rewired test --transformIgnorePatterns \"node_modules/(?!connect-web)/\" --watchAll=false",
     "buf:generate": "buf generate buf.build/bufbuild/eliza"
   },
-  "type": "commonjs",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -43,10 +42,10 @@
     ]
   },
   "devDependencies": {
-    "@bufbuild/connect-web": "^0.3.3",
-    "@bufbuild/protobuf": "^0.4.0",
-    "@bufbuild/protoc-gen-connect-web": "^0.3.3",
-    "@bufbuild/protoc-gen-es": "^0.4.0",
+    "@bufbuild/connect-web": "^0.5.0",
+    "@bufbuild/protobuf": "^1.0.0",
+    "@bufbuild/protoc-gen-connect-web": "^0.5.0",
+    "@bufbuild/protoc-gen-es": "^1.0.0",
     "prettier": "^2.7.1",
     "react-app-rewired": "^2.2.1",
     "resolve-typescript-plugin": "^1.2.0",
