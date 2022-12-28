@@ -2,13 +2,14 @@ import {
     createPromiseClient,
     createConnectTransport,
 } from '@bufbuild/connect-web-next'
-import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
-import { grpcWebCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
 import { ElizaService } from './gen/buf/connect/demo/eliza/v1/eliza_connectweb.js'
 import { IntroduceRequest } from './gen/buf/connect/demo/eliza/v1/eliza_pb.js'
 
+import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
+import { grpcCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
+
 console.log(connectCodeFromHttpStatus(431));
-console.log(grpcWebCodeFromHttpStatus(200));
+console.log(grpcCodeFromHttpStatus(200));
 
 let introFinished = false;
 

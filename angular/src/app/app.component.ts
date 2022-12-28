@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core'
 import { ObservableClient } from 'src/connect/observable-client'
 import { ElizaService } from 'src/gen/buf/connect/demo/eliza/v1/eliza_connectweb'
+
 import { connectCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-connect';
-import { grpcWebCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
+import { grpcCodeFromHttpStatus} from '@bufbuild/connect-core/protocol-grpc';
 
 console.log(connectCodeFromHttpStatus(431));
-console.log(grpcWebCodeFromHttpStatus(200));
+console.log(grpcCodeFromHttpStatus(200));
 
 interface Response {
     text: string
