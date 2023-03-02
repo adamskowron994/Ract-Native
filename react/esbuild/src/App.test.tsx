@@ -12,7 +12,7 @@ test('imports messages correctly', () => {
     expect(IntroduceRequest).toBeDefined()
 })
 
-test('creates a promise client', () => {
+test('creates a promise client', async () => {
     const client = createPromiseClient(
         ElizaService,
         createConnectTransport({
@@ -21,4 +21,10 @@ test('creates a promise client', () => {
     )
     expect(client.say).toBeDefined()
     expect(client.introduce).toBeDefined()
+
+    const response = await client.say({
+        sentence: 'hi',
+    })
+
+    expect(response).toBeDefined()
 })
