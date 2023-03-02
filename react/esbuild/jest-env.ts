@@ -12,6 +12,7 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
         this.global.Headers = Headers
         this.global.Response = Response
 
+        // FIXME https://github.com/jsdom/jsdom/issues/2524
         this.global.TextEncoder = TextEncoder
         this.global.TextDecoder = TextDecoder
     }
